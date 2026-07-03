@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepak Chudasama — Supply Chain &amp; Operations</title>
+<meta name="description" content="Deepak Chudasama — Supply Chain &amp; Operations Professional based in Hamburg, Germany.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:            #12161D;
+    --bg-panel:      #1A2029;
+    --bg-panel-2:    #1F2631;
+    --line:          #2A3140;
+    --line-soft:     #232A36;
+    --text:          #EDEFF3;
+    --text-muted:    #8B94A6;
+    --text-faint:    #5B6577;
+    --amber:         #F2A83B;
+    --amber-dim:     #7A5A26;
+    --teal:          #4FBDA5;
+    --teal-dim:      #2A5850;
+    --radius:        3px;
+    --maxw:          1080px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--amber); color:#12161D; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,22,29,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--maxw); margin:0 auto;
+  }
+  .nav-mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:13px; letter-spacing:0.06em;
+  }
+  .nav-mark .box{
+    width:28px; height:28px; border:1px solid var(--amber);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:13px; color:var(--amber);
+    border-radius:var(--radius);
+  }
+  .nav-mark span{ color:var(--text-muted); }
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.05em;
+    color:var(--text-muted); text-transform:uppercase;
+    position:relative; padding-bottom:3px;
+    transition:color .2s ease;
+  }
+  nav.links a:hover{ color:var(--text); }
+  nav.links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--amber); transition:width .25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+  .nav-cta{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.04em;
+    color:var(--bg); background:var(--amber);
+    padding:9px 16px; border-radius:var(--radius);
+    text-transform:uppercase; white-space:nowrap;
+    transition:filter .2s ease;
+  }
+  .nav-cta:hover{ filter:brightness(1.12); }
+  @media (max-width:760px){ nav.links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 64px; border-bottom:1px solid var(--line-soft); position:relative; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 900px 420px at 70% 0%, #000 0%, transparent 70%);
+    mask-image:radial-gradient(ellipse 900px 420px at 70% 0%, #000 0%, transparent 70%);
+    opacity:0.6;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.16em;
+    color:var(--amber); text-transform:uppercase; display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--amber); display:inline-block; }
+  h1.name{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 4.3rem);
+    line-height:1.02; letter-spacing:-0.01em;
+    margin-bottom:14px; position:relative; z-index:1;
+  }
+  .role-line{
+    font-family:var(--body); font-weight:500;
+    font-size:clamp(1.05rem, 2.2vw, 1.35rem);
+    color:var(--text-muted); max-width:640px; margin-bottom:34px; position:relative; z-index:1;
+  }
+  .role-line strong{ color:var(--text); font-weight:600; }
+
+  .stat-strip{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; margin-bottom:36px; position:relative; z-index:1;
+    background:var(--bg-panel);
+  }
+  .stat{
+    padding:18px 20px; border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat .num{
+    font-family:var(--mono); font-weight:600; font-size:clamp(1.3rem,2.6vw,1.7rem);
+    color:var(--teal); display:block; margin-bottom:4px;
+  }
+  .stat .lbl{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em;
+    color:var(--text-faint); text-transform:uppercase;
+  }
+  @media (max-width:700px){
+    .stat-strip{ grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(2){ border-right:none; }
+  }
+
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; position:relative; z-index:1; }
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.03em;
+    padding:12px 22px; border-radius:var(--radius);
+    display:inline-flex; align-items:center; gap:9px;
+    transition:all .2s ease; border:1px solid var(--line);
+  }
+  .btn-primary{ background:var(--amber); color:#12161D; border-color:var(--amber); font-weight:600; }
+  .btn-primary:hover{ filter:brightness(1.1); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:76px 0; border-bottom:1px solid var(--line-soft); }
+  .section-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:44px; }
+  .section-tag{
+    font-family:var(--mono); font-size:12px; color:var(--text-faint);
+    letter-spacing:0.08em; white-space:nowrap;
+  }
+  .section-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(1.5rem,3vw,2.1rem);
+  }
+  .section-title .accent{ color:var(--amber); }
+  .section-sub{
+    color:var(--text-muted); max-width:560px; margin-top:10px; font-size:0.98rem;
+  }
+
+  /* ---------- ROUTE (timeline) ---------- */
+  .route{ position:relative; }
+  .route-line{
+    position:absolute; left:11px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(var(--amber), var(--line) 85%);
+  }
+  .route-item{
+    position:relative; padding:0 0 46px 42px; opacity:0; transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .route-item.in{ opacity:1; transform:none; }
+  .route-item:last-child{ padding-bottom:0; }
+  .node{
+    position:absolute; left:0; top:2px; width:23px; height:23px;
+    border-radius:50%; background:var(--bg-panel); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .node::after{
+    content:''; width:7px; height:7px; border-radius:50%; background:var(--text-faint);
+  }
+  .route-item.current .node{ border-color:var(--amber); }
+  .route-item.current .node::after{
+    background:var(--amber); box-shadow:0 0 0 4px rgba(242,168,59,0.18);
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 4px rgba(242,168,59,0.18); }
+    50%{ box-shadow:0 0 0 8px rgba(242,168,59,0.06); }
+  }
+  .route-meta{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:6px;
+  }
+  .route-role{ font-family:var(--display); font-weight:600; font-size:1.12rem; }
+  .route-dates{
+    font-family:var(--mono); font-size:12px; color:var(--amber);
+    letter-spacing:0.03em; white-space:nowrap;
+  }
+  .route-company{ color:var(--text-muted); font-size:0.94rem; margin-bottom:10px; }
+  .route-desc{ color:var(--text-muted); font-size:0.94rem; max-width:620px; }
+  .route-desc strong{ color:var(--teal); font-weight:600; }
+  .tag-current{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.06em;
+    color:var(--amber); border:1px solid var(--amber-dim); border-radius:20px;
+    padding:2px 9px; text-transform:uppercase;
+  }
+
+  /* ---------- MANIFEST (skills) ---------- */
+  .manifest{
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    background:var(--bg-panel);
+  }
+  .manifest-row{
+    display:grid; grid-template-columns:200px 1fr;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .manifest-row:last-child{ border-bottom:none; }
+  .manifest-label{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.05em;
+    color:var(--text-faint); text-transform:uppercase;
+    padding:20px 22px; border-right:1px solid var(--line-soft);
+    background:var(--bg-panel-2);
+  }
+  .manifest-items{
+    padding:20px 22px; display:flex; flex-wrap:wrap; gap:9px 10px; align-items:center;
+  }
+  .chip{
+    font-family:var(--mono); font-size:12.5px; color:var(--text);
+    border:1px solid var(--line); border-radius:20px; padding:5px 13px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .chip:hover{ border-color:var(--teal); color:var(--teal); }
+  @media (max-width:680px){
+    .manifest-row{ grid-template-columns:1fr; }
+    .manifest-label{ border-right:none; border-bottom:1px solid var(--line-soft); padding:14px 18px; }
+    .manifest-items{ padding:16px 18px; }
+  }
+
+  /* ---------- CREDENTIALS ---------- */
+  .cred-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+  @media (max-width:760px){ .cred-grid{ grid-template-columns:1fr; } }
+  .cred-block h3{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;
+    color:var(--teal); text-transform:uppercase; margin-bottom:18px;
+  }
+  .cred-entry{ padding:14px 0; border-bottom:1px solid var(--line-soft); }
+  .cred-entry:last-child{ border-bottom:none; }
+  .cred-title{ font-weight:600; font-size:0.98rem; margin-bottom:3px; }
+  .cred-sub{ color:var(--text-muted); font-size:0.88rem; }
+  .cred-year{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+    float:right;
+  }
+  .lang-row{
+    display:flex; justify-content:space-between; padding:11px 0;
+    border-bottom:1px solid var(--line-soft); font-size:0.94rem;
+  }
+  .lang-row:last-child{ border-bottom:none; }
+  .lang-level{ font-family:var(--mono); font-size:12px; color:var(--text-faint); }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{ border-bottom:none; padding-bottom:60px; }
+  .contact-grid{
+    display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:start;
+  }
+  @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact h2{
+    font-family:var(--display); font-weight:600; font-size:clamp(1.6rem,3.4vw,2.3rem);
+    line-height:1.15; margin-bottom:18px;
+  }
+  .contact h2 .accent{ color:var(--amber); }
+  .contact p.lead{ color:var(--text-muted); max-width:460px; margin-bottom:28px; }
+  .contact-list a{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0; border-bottom:1px solid var(--line-soft);
+    font-family:var(--mono); font-size:14px; transition:color .2s ease;
+  }
+  .contact-list a:hover{ color:var(--amber); }
+  .contact-list .k{ color:var(--text-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; }
+  .contact-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+    background:var(--bg-panel);
+  }
+  .contact-card .status{
+    display:flex; align-items:center; gap:8px; margin-bottom:16px;
+    font-family:var(--mono); font-size:12px; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px rgba(79,189,165,0.18); }
+  .contact-card p{ color:var(--text-muted); font-size:0.92rem; margin-bottom:18px; }
+
+  footer{
+    padding:26px 0 40px; text-align:center;
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint); letter-spacing:0.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    .route-item{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark"><span class="box">DC</span><span>DEEPAK&nbsp;CHUDASAMA</span></div>
+    <nav class="links">
+      <a href="#route">Route</a>
+      <a href="#manifest">Manifest</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="mailto:deepakchudasama56@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Supply Chain &amp; Operations · Hamburg, DE</div>
+    <h1 class="name">Deepak Chudasama</h1>
+    <p class="role-line">I keep <strong>goods, data, and teams</strong> moving on time. Six years turning warehouse chaos into measurable, reliable operations.</p>
+
+    <div class="stat-strip">
+      <div class="stat"><span class="num">6+</span><span class="lbl">Years Experience</span></div>
+      <div class="stat"><span class="num">96%+</span><span class="lbl">Inventory Accuracy</span></div>
+      <div class="stat"><span class="num">91%+</span><span class="lbl">OTIF Performance</span></div>
+      <div class="stat"><span class="num">4</span><span class="lbl">Languages</span></div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:deepakchudasama56@gmail.com">✉ Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/deepak-chudasama" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="CV_Deepak_Chudasama.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="route">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">01 / JOURNEY</span>
+      <div>
+        <h2 class="section-title">The <span class="accent">Route</span></h2>
+        <p class="section-sub">From production floors in India to fulfilment operations in Hamburg — every stop taught me something about how goods actually move.</p>
+      </div>
+    </div>
+
+    <div class="route">
+      <div class="route-line"></div>
+
+      <div class="route-item current">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Fulfillment Manager</span>
+          <span class="tag-current">Current</span>
+          <span class="route-dates">Apr 2025 — Present</span>
+        </div>
+        <div class="route-company">Choose 2 Rent · Hamburg, Germany</div>
+        <div class="route-desc">Leading the fulfilment team end to end — inventory, shipments, returns, and international coordination with US/UK partners. Sustaining <strong>96%+ inventory accuracy</strong> and <strong>91%+ OTIF</strong>.</div>
+      </div>
+
+      <div class="route-item">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Operations Associate</span>
+          <span class="route-dates">Apr 2022 — Sep 2024</span>
+        </div>
+        <div class="route-company">Circus Group (Circus SE) · Hamburg, Germany</div>
+        <div class="route-desc">Supported operational scaling during rapid startup growth. Drove <strong>KPI reporting</strong> and process-optimization initiatives across a fast-changing environment.</div>
+      </div>
+
+      <div class="route-item">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Senior Warehouse Associate</span>
+          <span class="route-dates">Jun 2022 — Aug 2022</span>
+        </div>
+        <div class="route-company">Gorillas Operations Germany GmbH · Hamburg</div>
+        <div class="route-desc">Led daily warehouse operations and a team of associates. Improved order accuracy by <strong>10%</strong>.</div>
+      </div>
+
+      <div class="route-item">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Warehouse Inventory Associate</span>
+          <span class="route-dates">Jan 2022 — Jun 2022</span>
+        </div>
+        <div class="route-company">Gorillas Operations Germany GmbH · Hamburg</div>
+        <div class="route-desc">Ran cycle counts and inventory analysis, reducing stock discrepancies by <strong>18%</strong>.</div>
+      </div>
+
+      <div class="route-item">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Assistant Production Engineer</span>
+          <span class="route-dates">Oct 2019 — Oct 2021</span>
+        </div>
+        <div class="route-company">Anmol Pole Trading Company · India</div>
+        <div class="route-desc">Supported production planning, material coordination, and workflow management on the factory floor.</div>
+      </div>
+
+      <div class="route-item">
+        <span class="node"></span>
+        <div class="route-meta">
+          <span class="route-role">Intern, Inventory Maintenance &amp; Mechanical Design</span>
+          <span class="route-dates">Jun 2019 — Sep 2019</span>
+        </div>
+        <div class="route-company">Sidhhivinayak Electrical · India</div>
+        <div class="route-desc">First hands-on exposure to inventory tracking and mechanical design documentation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="manifest">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">02 / CAPABILITIES</span>
+      <div>
+        <h2 class="section-title">The <span class="accent">Manifest</span></h2>
+        <p class="section-sub">What's on board — the skills and tools I use to keep operations running on schedule.</p>
+      </div>
+    </div>
+
+    <div class="manifest">
+      <div class="manifest-row">
+        <div class="manifest-label">Operations</div>
+        <div class="manifest-items">
+          <span class="chip">Daily Operations Management</span>
+          <span class="chip">Team Coordination</span>
+          <span class="chip">Field &amp; Hands-on Support</span>
+          <span class="chip">Incident Handling</span>
+        </div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-label">Inventory &amp; Supply</div>
+        <div class="manifest-items">
+          <span class="chip">Inventory Accuracy</span>
+          <span class="chip">Goods Receipt &amp; Reconciliation</span>
+          <span class="chip">Discrepancy Resolution</span>
+          <span class="chip">Asset Availability</span>
+        </div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-label">Analytics</div>
+        <div class="manifest-items">
+          <span class="chip">KPI Monitoring</span>
+          <span class="chip">Operational Reporting</span>
+          <span class="chip">Process Optimization</span>
+          <span class="chip">Power BI</span>
+        </div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-label">Systems</div>
+        <div class="manifest-items">
+          <span class="chip">SAP S/4HANA</span>
+          <span class="chip">ERP Systems</span>
+          <span class="chip">MS Excel</span>
+          <span class="chip">Inventory Tracking Tools</span>
+        </div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-label">Languages</div>
+        <div class="manifest-items">
+          <span class="chip">English — Fluent</span>
+          <span class="chip">German — A2, improving</span>
+          <span class="chip">Hindi — Fluent</span>
+          <span class="chip">Gujarati — Fluent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">03 / CREDENTIALS</span>
+      <div>
+        <h2 class="section-title">Papers &amp; <span class="accent">Clearance</span></h2>
+        <p class="section-sub">Formal education and certifications backing the on-the-job experience.</p>
+      </div>
+    </div>
+
+    <div class="cred-grid">
+      <div class="cred-block">
+        <h3>Education</h3>
+        <div class="cred-entry">
+          <span class="cred-year">2024</span>
+          <div class="cred-title">M.Sc. Supply Chain Management</div>
+          <div class="cred-sub">SRH Berlin University of Applied Sciences, Campus Hamburg</div>
+        </div>
+        <div class="cred-entry">
+          <span class="cred-year">2018</span>
+          <div class="cred-title">B.Eng. Mechanical Engineering</div>
+          <div class="cred-sub">Gujarat Technological University, India</div>
+        </div>
+      </div>
+
+      <div class="cred-block">
+        <h3>Certifications</h3>
+        <div class="cred-entry">
+          <span class="cred-year">2022</span>
+          <div class="cred-title">SAP S/4HANA</div>
+          <div class="cred-sub">TH Brandenburg</div>
+        </div>
+        <div class="cred-entry">
+          <span class="cred-year">2023</span>
+          <div class="cred-title">Power BI</div>
+          <div class="cred-sub">Udemy</div>
+        </div>
+        <div class="cred-entry">
+          <span class="cred-year">2024</span>
+          <div class="cred-title">Advanced MS Excel · Python Foundations · Project Management Fundamentals</div>
+          <div class="cred-sub">Udemy · ReDI School · IBM SkillsBuild</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Open to the next <span class="accent">shipment.</span></h2>
+        <p class="lead">Based in Hamburg, open to opportunities across Germany in Supply Chain, Logistics, and Operations. Let's talk about what needs moving.</p>
+        <div class="contact-list">
+          <a href="mailto:deepakchudasama56@gmail.com"><span><span class="k">Email</span><br>deepakchudasama56@gmail.com</span><span>↗</span></a>
+          <a href="tel:015758531857"><span><span class="k">Phone</span><br>0157 5853 1857</span><span>↗</span></a>
+          <a href="https://www.linkedin.com/in/deepak-chudasama" target="_blank" rel="noopener"><span><span class="k">LinkedIn</span><br>linkedin.com/in/deepak-chudasama</span><span>↗</span></a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="status"><span class="dot"></span> Available from 01.07.2026</div>
+        <p>Based in Hamburg, Germany. Open to roles across Supply Chain, Logistics, Warehouse Operations, and Fulfilment — on-site, hybrid, or remote within Germany.</p>
+        <a class="btn btn-primary" style="width:100%; justify-content:center;" href="mailto:deepakchudasama56@gmail.com">Start a conversation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>DEEPAK CHUDASAMA — SUPPLY CHAIN &amp; OPERATIONS — HAMBURG, GERMANY</footer>
+
+<script>
+  const items = document.querySelectorAll('.route-item');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.2 });
+  items.forEach(i=>io.observe(i));
+</script>
+
+</body>
+</html>
